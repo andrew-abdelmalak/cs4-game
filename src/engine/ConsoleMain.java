@@ -74,7 +74,7 @@ public class ConsoleMain {
         Hero starter = Game.availableHeroes.get(0);
         Game.startGame(starter);
 
-        out.println("=== The Last of Us: Legacy — Automated Engine Demo ===");
+        out.println("=== The Last of Us: Legacy: Automated Engine Demo ===");
         out.println("Loaded " + (Game.availableHeroes.size() + 1) + " heroes from " + DEFAULT_HEROES_FILE
                 + ". Starting hero: " + starter.getName() + " (" + starter.getClass().getSimpleName()
                 + ", HP " + starter.getCurrentHp() + "/" + starter.getMaxHp()

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="270" viewBox="0 0 880 270" role="img" aria-labelledby="loop-title-dark loop-desc-dark">
+  <title id="loop-title-dark">Turn Lifecycle (Dark)</title>
+  <desc id="loop-desc-dark">Flow from Game.startGame through hero actions, Game.endTurn zombie phase and fog-of-war reset, to win or game over checks.</desc>
+  <rect width="880" height="270" rx="12" fill="#0d1117"/>
+  <rect x="1" y="1" width="878" height="268" rx="11" fill="none" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Box 1: Setup -->
+  <rect x="30" y="42" width="180" height="96" rx="10" fill="#161b22" stroke="#58a6ff" stroke-width="2"/>
+  <text x="120" y="70" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700" fill="#79c0ff">1. Start Game</text>
+  <text x="120" y="94" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">Load heroes.csv (9)</text>
+  <text x="120" y="114" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">Spawn 10Z, 5V, 5S, 5T</text>
+
+  <!-- Arrow 1->2 -->
+  <line x1="210" y1="90" x2="244" y2="90" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="240,84 240,96 250,90" fill="#8b949e"/>
+
+  <!-- Box 2: Hero Actions -->
+  <rect x="252" y="42" width="200" height="96" rx="10" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+  <text x="352" y="70" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700" fill="#56d364">2. Hero Turn</text>
+  <text x="352" y="94" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">move (1 AP) • attack (1 AP)</text>
+  <text x="352" y="114" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">cure (1 AP) • useSpecial (0 AP)</text>
+
+  <!-- Arrow 2->3 -->
+  <line x1="452" y1="90" x2="486" y2="90" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="482,84 482,96 492,90" fill="#8b949e"/>
+
+  <!-- Box 3: End Turn -->
+  <rect x="494" y="42" width="185" height="96" rx="10" fill="#161b22" stroke="#d29922" stroke-width="2"/>
+  <text x="586" y="70" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700" fill="#e3b341">3. End Turn</text>
+  <text x="586" y="94" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">Zombies attack adjacent</text>
+  <text x="586" y="114" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">Reset AP + fog + spawn Z</text>
+
+  <!-- Arrow 3->4 -->
+  <line x1="679" y1="90" x2="713" y2="90" stroke="#8b949e" stroke-width="2"/>
+  <polygon points="709,84 709,96 719,90" fill="#8b949e"/>
+
+  <!-- Box 4: Check End -->
+  <rect x="721" y="42" width="130" height="96" rx="10" fill="#161b22" stroke="#f85149" stroke-width="2"/>
+  <text x="786" y="70" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" font-weight="700" fill="#ff7b72">4. Evaluate</text>
+  <text x="786" y="94" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">Win: 5+ heroes,</text>
+  <text x="786" y="114" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#e6edf3">0 vaccines left</text>
+
+  <!-- Loop back arrow -->
+  <path d="M 786 138 L 786 184 L 352 184 L 352 146" fill="none" stroke="#8b949e" stroke-width="2" stroke-dasharray="6,4"/>
+  <polygon points="346,150 358,150 352,140" fill="#8b949e"/>
+  <text x="569" y="206" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#8b949e">Continue if !checkWin() &amp;&amp; !checkGameOver()</text>
+
+  <!-- Caption -->
+  <text x="30" y="242" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#8b949e">Counter-attack: any attacked character deals 50% of its attackDmg back to the attacker.</text>
+</svg>

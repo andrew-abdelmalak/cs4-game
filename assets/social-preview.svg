@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">cs4-game: The Last of Us: Legacy</title>
+  <desc id="desc">Turn-based Java 17 survival game engine on a 15x15 fog-of-war grid with 299 JUnit 4 tests.</desc>
+
+  <rect width="1280" height="640" fill="#0F172A"/>
+  <rect x="0" y="0" width="16" height="640" fill="#22C55E"/>
+
+  <!-- 4x4 tactical fog-of-war grid emblem (29px padding, 58px cells, 10px gap = 320x320) -->
+  <g transform="translate(860, 140)">
+    <rect x="0" y="0" width="320" height="320" rx="20" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+    <!-- Row 0 (fog + zombie) -->
+    <rect x="29"  y="29" width="58" height="58" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+    <rect x="97"  y="29" width="58" height="58" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+    <rect x="165" y="29" width="58" height="58" rx="8" fill="#450A0A" stroke="#EF4444" stroke-width="2"/>
+    <rect x="233" y="29" width="58" height="58" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+    <!-- Row 1 (visible 3x3 top + fog) -->
+    <rect x="29"  y="97" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="97"  y="97" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="165" y="97" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="233" y="97" width="58" height="58" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+    <!-- Row 2 (visible 3x3 middle with Hero + fog) -->
+    <rect x="29"  y="165" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="97"  y="165" width="58" height="58" rx="8" fill="#22C55E"/>
+    <rect x="165" y="165" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="233" y="165" width="58" height="58" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+    <!-- Row 3 (visible 3x3 bottom + fog) -->
+    <rect x="29"  y="233" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="97"  y="233" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="165" y="233" width="58" height="58" rx="8" fill="#14532D" stroke="#22C55E" stroke-width="2"/>
+    <rect x="233" y="233" width="58" height="58" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1.5"/>
+
+    <!-- Symbols -->
+    <text x="194" y="68"  text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800" fill="#FCA5A5">Z</text>
+    <text x="194" y="136" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28" font-weight="700" fill="#38BDF8">V</text>
+    <text x="126" y="204" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="30" font-weight="800" fill="#0F172A">H</text>
+    <text x="58"  y="272" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="28" font-weight="700" fill="#FBBF24">S</text>
+  </g>
+
+  <!-- Title & Tagline (inside 80px safe margin) -->
+  <text x="80" y="190"
+        font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif"
+        font-size="88" font-weight="800" fill="#F8FAFC">cs4-game</text>
+
+  <text font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif"
+        font-size="38" font-weight="400" fill="#CBD5E1">
+    <tspan x="80" y="275">Turn-based Java 17 survival game engine</tspan>
+    <tspan x="80" y="328">15×15 fog-of-war grid • 299 JUnit 4 tests</tspan>
+  </text>
+
+  <rect x="80" y="388" width="230" height="46" rx="8" fill="#1E293B" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="195" y="418" text-anchor="middle"
+        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+        font-size="20" font-weight="600" fill="#86EFAC">Maven + CLI Demo</text>
+
+  <text x="80" y="544"
+        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
+        font-size="26" fill="#22C55E">github.com/andrew-abdelmalak/cs4-game</text>
+</svg>
