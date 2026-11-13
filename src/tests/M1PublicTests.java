@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 
 import model.characters.Zombie;
@@ -1415,6 +1417,10 @@ public class M1PublicTests {
 
 	@Test(timeout = 2000)
 	public void testConstructorInitializationZombie() throws Exception {
+		Field zombiesCountField = Class.forName(zombiePath).getDeclaredField("ZOMBIES_COUNT");
+		zombiesCountField.setAccessible(true);
+		zombiesCountField.setInt(null, 0);
+
 		int random = (int) (Math.random() * 1000);
 
 		Object[] zombies = new Zombie[50];
@@ -2526,6 +2532,14 @@ public class M1PublicTests {
 		assertTrue("Incorrect return type for " + methodName + " method in " + aClass.getSimpleName() + ".",
 				m.getReturnType().equals(Void.TYPE));
 
+	}
+
+	@AfterClass
+	public static void cleanupTempCsvFiles() {
+		String[] tempFiles = { "test_heros.csv", "test_Fighters.csv", "test_MEDs.csv", "test_Exp.csv" };
+		for (String name : tempFiles) {
+			new File(name).delete();
+		}
 	}
 
 }
