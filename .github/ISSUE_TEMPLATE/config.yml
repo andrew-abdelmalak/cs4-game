@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Getting help and usage questions
+    url: https://github.com/andrew-abdelmalak/cs4-game/blob/main/.github/SUPPORT.md
+    about: Usage questions belong in SUPPORT.md or email rather than the issue tracker.
+  - name: Report a security vulnerability
+    url: https://github.com/andrew-abdelmalak/cs4-game/security/advisories/new
+    about: Report vulnerabilities privately. Never open a public issue for them.

@@ -6,24 +6,21 @@ on:
   pull_request:
     branches: ["main"]
 
+permissions:
+  contents: read
+
 jobs:
-  compile:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-java@3a4f6e1af504cf6a31855fa899c6aa5355ba6c12 # v4.7.0
         with:
-          java-version: "11"
+          java-version: "17"
           distribution: "temurin"
-      - name: Compile
-        run: |
-          javac -d bin \
-            src/exceptions/*.java \
-            src/model/collectibles/*.java \
-            src/model/world/*.java \
-            src/model/characters/*.java \
-            src/engine/*.java
-      - name: Run Tests
-        run: |
-          javac -cp bin:. -d bin src/tests/*.java
-          java -cp bin:. org.junit.runner.JUnitCore tests.M1PublicTests tests.M2PublicTests
+          cache: "maven"
+      - name: Compile and run tests
+        run: mvn -B clean test
+      - name: Run console demo smoke check
+        run: mvn -B -q exec:java -Dexec.args="--demo"
