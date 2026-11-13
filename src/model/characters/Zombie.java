@@ -25,19 +25,19 @@ public class Zombie extends Character {
                 p = Game.getEmptyCell();
             }
 
-            boolean mshTmm = false;
+            boolean hasAdjacentZombie = false;
             ArrayList<Cell> adjacents = Game.getAdjacentCells(p.x, p.y);
             for (Cell cell : adjacents) {
                 if (cell instanceof CharacterCell) {
                     CharacterCell c = (CharacterCell) cell;
                     if (c.getCharacter() != null && c.getCharacter() instanceof Zombie) {
                         p = Game.getEmptyCell();
-                        mshTmm = true;
+                        hasAdjacentZombie = true;
                         break;
                     }
                 }
             }
-            if (!mshTmm)
+            if (!hasAdjacentZombie)
                 break;
         }
 
