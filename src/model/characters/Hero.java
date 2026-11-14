@@ -70,14 +70,8 @@ public abstract class Hero extends Character {
     }
 
     public void move(Direction d) throws MovementException, NotEnoughActionsException {
-        // kaza direction
-        // ne3raf rohna le anho cell
-        // trap? supply? character?
-        // all adjacent cells isVisible true
-        // bena2as action
-        // trap? yakhod el dmg wl trap te2leb character cell b null
-        // supply? pickupSupply w te2leb character cell b null
-        // CharacterCell ? law fadya yerohlaha w law msh fadya 8aleban msh hayrooh
+        // Determine target cell from direction, handle collectibles/traps/occupancy,
+        // reveal the destination and its 8 neighbors, and spend 1 action point.
 
         if (this.getActionsAvailable() == 0)
             throw new NotEnoughActionsException("You don't have enough action points");
@@ -198,7 +192,6 @@ public abstract class Hero extends Character {
             return;
         }
         throw new InvalidTargetException("Target not in adjacent cells");
-        // remove el zombie from game w add a hero makano
     }
 
     public void onCharacterDeath() {

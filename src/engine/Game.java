@@ -108,6 +108,37 @@ public class Game {
         return new Point(x, y);
     }
 
+    /**
+     * Finds an empty {@link CharacterCell} with no adjacent cell matching
+     * {@code avoidedCellType}, optionally avoiding adjacent zombies instead.
+     */
+    private static Point getSpreadOutEmptyCell(Class<? extends Cell> avoidedCellType, boolean avoidZombies) {
+        Point p = getEmptyCell();
+        while (true) {
+            boolean hasAdjacentConflict = false;
+            ArrayList<Cell> adjacents = getAdjacentCells(p.x, p.y);
+            for (Cell cell : adjacents) {
+                if (avoidZombies) {
+                    if (cell instanceof CharacterCell) {
+                        CharacterCell c = (CharacterCell) cell;
+                        if (c.getCharacter() != null && c.getCharacter() instanceof Zombie) {
+                            p = getEmptyCell();
+                            hasAdjacentConflict = true;
+                            break;
+                        }
+                    }
+                } else if (avoidedCellType != null && avoidedCellType.isInstance(cell)) {
+                    p = getEmptyCell();
+                    hasAdjacentConflict = true;
+                    break;
+                }
+            }
+            if (!hasAdjacentConflict) {
+                return p;
+            }
+        }
+    }
+
     public static void startGame(Hero h) {
         availableHeroes.remove(h);
         heroes.add(h);
@@ -121,85 +152,26 @@ public class Game {
                     Game.map[i][j] = new CharacterCell(null);
             }
         }
-        // Adding Zombies
+        // Spawn 10 zombies without placing two zombies adjacent to each other.
         for (int i = 0; i < 10; i++) {
             Zombie z = new Zombie();
             zombies.add(z);
-            Point p = getEmptyCell();
-            while (true) {
-                boolean mshTmm = false;
-                ArrayList<Cell> adjacents = getAdjacentCells(p.x, p.y);
-                for (Cell cell : adjacents) {
-                    if (cell instanceof CharacterCell) {
-                        CharacterCell c = (CharacterCell) cell;
-                        if (c.getCharacter() != null && c.getCharacter() instanceof Zombie) {
-                            p = getEmptyCell();
-                            mshTmm = true;
-                            break;
-                        }
-                    }
-                }
-                if (!mshTmm)
-                    break;
-            }
+            Point p = getSpreadOutEmptyCell(null, true);
             z.setLocation(p);
             CharacterCell c = (CharacterCell) Game.map[p.x][p.y];
             c.setCharacter(z);
         }
 
-        // Spawn collectibles and traps while keeping placement spread out.
+        // Spawn 5 vaccines, 5 supplies, and 5 traps spread out across empty cells.
         for (int i = 0; i < 5; i++) {
-            Point p1 = getEmptyCell();
-
-            while (true) {
-                boolean mshTmm = false;
-                ArrayList<Cell> adjacents = getAdjacentCells(p1.x, p1.y);
-                for (Cell cell : adjacents) {
-                    if (cell instanceof CollectibleCell) {
-                        p1 = getEmptyCell();
-                        mshTmm = true;
-                        break;
-                    }
-                }
-                if (!mshTmm)
-                    break;
-            }
+            Point p1 = getSpreadOutEmptyCell(CollectibleCell.class, false);
             Game.map[p1.x][p1.y] = new CollectibleCell(new Vaccine());
 
-            Point p2 = getEmptyCell();
-
-            while (true) {
-                boolean mshTmm = false;
-                ArrayList<Cell> adjacents = getAdjacentCells(p2.x, p2.y);
-                for (Cell cell : adjacents) {
-                    if (cell instanceof CollectibleCell) {
-                        p2 = getEmptyCell();
-                        mshTmm = true;
-                        break;
-                    }
-                }
-                if (!mshTmm)
-                    break;
-            }
+            Point p2 = getSpreadOutEmptyCell(CollectibleCell.class, false);
             Game.map[p2.x][p2.y] = new CollectibleCell(new Supply());
 
-            Point p3 = getEmptyCell();
-            while (true) {
-                boolean mshTmm = false;
-                ArrayList<Cell> adjacents = getAdjacentCells(p3.x, p3.y);
-                for (Cell cell : adjacents) {
-                    if (cell instanceof TrapCell) {
-                        p3 = getEmptyCell();
-                        mshTmm = true;
-                        break;
-                    }
-                }
-                if (!mshTmm)
-                    break;
-            }
-
+            Point p3 = getSpreadOutEmptyCell(TrapCell.class, false);
             Game.map[p3.x][p3.y] = new TrapCell();
-
         }
 
         Game.map[0][1].setVisible(true);
@@ -255,23 +227,7 @@ public class Game {
                 cell.setVisible(true);
             }
         }
-        Point p = getEmptyCell();
-        while (true) {
-            boolean mshTmm = false;
-            ArrayList<Cell> adjacents = getAdjacentCells(p.x, p.y);
-            for (Cell cell : adjacents) {
-                if (cell instanceof CharacterCell) {
-                    CharacterCell c = (CharacterCell) cell;
-                    if (c.getCharacter() != null && c.getCharacter() instanceof Zombie) {
-                        p = getEmptyCell();
-                        mshTmm = true;
-                        break;
-                    }
-                }
-            }
-            if (!mshTmm)
-                break;
-        }
+        Point p = getSpreadOutEmptyCell(null, true);
         Zombie z = new Zombie();
         zombies.add(z);
         z.setLocation(p);

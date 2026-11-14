@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420" role="img" aria-labelledby="arch-title arch-desc">
+  <title id="arch-title">cs4-game Package Architecture (Light)</title>
+  <desc id="arch-desc">Four-package Java OOP architecture showing engine driving model.characters, model.world, model.collectibles, and exceptions.</desc>
+  <rect width="880" height="420" rx="12" fill="#ffffff"/>
+  <rect x="1" y="1" width="878" height="418" rx="11" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+
+  <!-- Engine Layer -->
+  <rect x="40" y="30" width="800" height="86" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="64" y="60" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16" font-weight="700" fill="#1e3a8a">engine</text>
+  <text x="64" y="84" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="14" fill="#1e40af">Game (static 15x15 map, heroes, zombies, startGame, endTurn, checkWin, checkGameOver)</text>
+  <text x="64" y="104" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#3b82f6">ConsoleMain (--demo walkthrough &amp; interactive terminal runner)</text>
+
+  <!-- Arrows down -->
+  <line x1="170" y1="116" x2="170" y2="152" stroke="#64748b" stroke-width="2"/>
+  <polygon points="164,148 176,148 170,158" fill="#64748b"/>
+  <line x1="440" y1="116" x2="440" y2="152" stroke="#64748b" stroke-width="2"/>
+  <polygon points="434,148 446,148 440,158" fill="#64748b"/>
+  <line x1="710" y1="116" x2="710" y2="152" stroke="#64748b" stroke-width="2"/>
+  <polygon points="704,148 716,148 710,158" fill="#64748b"/>
+
+  <!-- model.characters -->
+  <rect x="40" y="160" width="260" height="148" rx="10" fill="#f8fafc" stroke="#0f766e" stroke-width="2"/>
+  <text x="60" y="188" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#134e4a">model.characters</text>
+  <text x="60" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Character (abstract)</text>
+  <text x="60" y="236" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Hero (abstract): move, cure</text>
+  <text x="60" y="258" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Fighter / Medic / Explorer</text>
+  <text x="60" y="280" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Zombie, Direction enum</text>
+
+  <!-- model.world -->
+  <rect x="320" y="160" width="240" height="148" rx="10" fill="#f8fafc" stroke="#475569" stroke-width="2"/>
+  <text x="340" y="188" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#1e293b">model.world</text>
+  <text x="340" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Cell (visibility flag)</text>
+  <text x="340" y="236" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• CharacterCell</text>
+  <text x="340" y="258" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• CollectibleCell</text>
+  <text x="340" y="280" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• TrapCell (10–30 dmg)</text>
+
+  <!-- model.collectibles -->
+  <rect x="580" y="160" width="260" height="148" rx="10" fill="#f8fafc" stroke="#b45309" stroke-width="2"/>
+  <text x="600" y="188" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" font-weight="700" fill="#78350f">model.collectibles</text>
+  <text x="600" y="214" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Collectible (interface)</text>
+  <text x="600" y="236" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Vaccine (cure + recruit)</text>
+  <text x="600" y="258" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#0f172a">• Supply (class useSpecial)</text>
+
+  <!-- exceptions -->
+  <rect x="40" y="334" width="800" height="60" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="2"/>
+  <text x="64" y="362" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="14" font-weight="700" fill="#991b1b">exceptions</text>
+  <text x="176" y="362" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="13" fill="#7f1d1d">GameActionException → InvalidTargetException | MovementException | NoAvailableResourcesException | NotEnoughActionsException</text>
+  <text x="64" y="382" font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="12" fill="#991b1b">Checked exceptions enforced across hero actions, targeting, and turn lifecycle.</text>
+</svg>

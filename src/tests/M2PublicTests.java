@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.awt.Point;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,6 +22,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 
 import engine.Game;
@@ -5842,6 +5844,14 @@ public class M2PublicTests {
 		if (findSimilarity(s1, s2) > 0.5)
 			fail("zombies should be randomly added to the game at the end of each turn");
 
+	}
+
+	@AfterClass
+	public static void cleanupTempCsvFiles() {
+		String[] tempFiles = { "test_heros.csv", "test_Fighters.csv", "test_MEDs.csv", "test_Exp.csv" };
+		for (String name : tempFiles) {
+			new File(name).delete();
+		}
 	}
 
 }

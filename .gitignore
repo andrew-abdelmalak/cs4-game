@@ -30,6 +30,7 @@ __MACOSX/
 # ========================
 *.class
 /bin/
+/target/
 *.jar
 *.war
 *.ear
